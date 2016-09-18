@@ -1,0 +1,111 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 10, 2016, 5:55:49 PM
+    Author     : Chris
+*/
+
+a {
+    cursor:pointer;
+}
+footer ul {
+    list-style-type: none;
+    height:60px;
+    margin-top:60px;
+}
+
+.new-post {
+    padding:16px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.new-post header, .posts header {
+    margin-bottom: 20px;
+}
+
+.posts .post {
+    padding-left: 10px;
+    border-left: 3px solid #E95420;
+    margin-bottom: 30px;
+}
+
+.posts .post .info {
+    color:#aaa;
+    font-style:italic;
+}
+
+.error {
+    border:1px solid red;
+    color:red;
+    text-align: center;
+}
+
+.error ul {
+    list-style-type: none;
+    margin:0;
+    padding:0;
+}
+
+.success {
+    border:1px solid green;
+    color:green;
+    text-align: center;
+}
+
+.dropzone {
+    text-align:center;
+}
+
+.img {
+    padding:5px 0;
+}
+
+.post {
+    padding:5px 0;
+}
+.primary-color {
+    color:#E95420;
+}
+.username a {
+    text-decoration: none;
+}
+
+.arrow-up.clicked {
+    color: orange;
+}
+.arrow-down.clicked {
+    color: deepskyblue;
+}
+
+.content {
+  overflow: auto;
+  position: relative;
+}
+.content:before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+
+  display: block;
+  background-image: url('../img/welcome/wolfe.jpg');
+  background-size:cover;
+  width: 105%;
+  height: 105%;
+
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+  
+  background-color: #000;
+}
+
+.footer-text {
+    margin:10px 0 5px 0;
+}
