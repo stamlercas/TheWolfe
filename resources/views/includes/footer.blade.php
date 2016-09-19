@@ -6,7 +6,7 @@
                     <li><a href='{{ route('about') }}'>about us</a></li>
                     <li><a href='#'>contact</a></li>
                     <li><a href='https://github.com/stamlercas/TheWolfe'>github</a></li>
-                    <li><a href='#'>report a bug</a></li>
+                    <li><a href='https://github.com/stamlercas/TheWolfe/issues'>report a bug</a></li>
                 </ul>
             </div>
         </div>
