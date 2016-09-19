@@ -17,6 +17,8 @@ About Us
 </section>
 <section class='row'>
     <div class='col-md-6 col-md-offset-3'>
+            Like so:
+            <br />
         <img class='img-responsive' src='{{ asset('img/welcome/wolfe.jpg') }}' alt='The Big Bad Wolfe' />
     </div>
 </section>
