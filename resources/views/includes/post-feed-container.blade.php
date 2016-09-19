@@ -35,8 +35,6 @@
     </div><!-- /.modal -->
     
     <script>
-        angular.module('myApplication', ['infinite-scroll']);
-        
         var postId = 0;
         var postBodyElement = null;
         var voted_flag = false;

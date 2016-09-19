@@ -37,7 +37,8 @@
                         <span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span>
                     </div>
                     <br />
-                    <a class='report' href="#">Report</a>
+                    <!--
+                    <a class='report' href="#">Report</a> -->
                     @if(Auth::user() == $post->user)
                     | 
                     <a class='edit' href='#'>Edit</a> | 
