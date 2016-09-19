@@ -99,7 +99,7 @@ class UserController extends Controller {
     public function getUser(Request $request, $username)
     {
         $user = User::where('username', $username)->first();
-        $posts = Post::where('user_id', $user->id)->orderBy('created_at', 'desc')->paginate(3);
+        $posts = Post::where('user_id', $user->id)->orderBy('created_at', 'desc')->paginate(10);
         
         if ($request->ajax())
         {

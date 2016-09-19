@@ -15,8 +15,7 @@ class PostController extends Controller
     public function getDashboard(Request $request)
     {
         //$posts = Post::orderBy('posts.created_at', 'desc')->join('users', 'posts.user_id', '=', 'users.id')->get(); //fetch all posts
-        $posts = Post::orderBy('created_at', 'desc')->paginate(3);
-        
+        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
         if ($request->ajax())
         {
             return [
