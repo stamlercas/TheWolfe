@@ -3,7 +3,7 @@
         <div class='row'>
             <div class='col-sm-4 col'>
                 <ul>
-                    <li><a href='#'>about us</a></li>
+                    <li><a href='{{ route('about') }}'>about us</a></li>
                     <li><a href='#'>contact</a></li>
                     <li><a href='https://github.com/stamlercas/TheWolfe'>github</a></li>
                     <li><a href='#'>report a bug</a></li>
