@@ -12,6 +12,8 @@
         <link rel='stylesheet' href='{{ asset('css/main.css') }}' />
         <link rel='stylesheet' href='{{ asset('css/dropzone.css') }}' />
         
+        <link href="{{ asset('img/favicon.ico') }}" type="image/png" rel="icon">
+        
         <script src='{{ asset('js/jquery-2.1.3.js') }}'></script>
         <script src='{{ asset('js/bootstrap.min.js') }}'></script>
         <script src='{{ asset('js/dropzone.js') }}'></script>
