@@ -11,14 +11,41 @@
         <link rel='stylesheet' href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css" />
         <link rel='stylesheet' href='{{ asset('css/main.css') }}' />
         <link rel='stylesheet' href='{{ asset('css/dropzone.css') }}' />
+        <style>
+            .content:before {
+                background-image: url( 
+              <?php
+                        //uses the function to get the random pic and pass it into the
+                        //variable in javascript within the function to call
+                        function randPic()
+                        {
+                            $files = array(
+                                'wolfe.jpg',
+                                'wolfe2.jpg',
+                                'wolfe3.jpg',
+                                );
+                            $file = array_rand($files);
+                            return asset("img/welcome/$files[$file]");
+                            /*
+                            $dir = Storage::disk('public')->files('img/welcome');
+                            $files = Storage::files('/public/img/welcome');//glob($dir . '/*.*');
+                            $file = array_rand($files);
+                            return print_r($files);
+                            return $files[$file];
+                             *
+                             */
+                        }
+                        //need the quotes, or else it is not defined
+                        echo randPic();
+                    ?> )
+            }
+        </style>
         
         <link href="{{ asset('img/favicon.ico') }}" type="image/png" rel="icon">
         
         <script src='{{ asset('js/jquery-2.1.3.js') }}'></script>
         <script src='{{ asset('js/bootstrap.min.js') }}'></script>
         <script src='{{ asset('js/dropzone.js') }}'></script>
-        <script src="{{ asset('js/angular.min.js') }}"></script>
-        <script src="{{ asset('js/ng-infinite-scroll.min.js') }}"></script>
         <script src='{{ asset('js/main.js') }}'></script>
         <script>
             uploadRoute = "{{ route('post.image.upload') }}";

@@ -87,12 +87,13 @@ footer ul {
 .content:before {
   content: "";
   position: fixed;
-  left: -5px;
+  top:-15px;
+  left: -15px;
   right: 0;
   z-index: -1;
 
   display: block;
-  background-image: url('../img/welcome/wolfe.jpg');
+  /*background-image: url('../img/welcome/wolfe.jpg');*/
   background-size:cover;
   width: 105%;
   height: 105%;
