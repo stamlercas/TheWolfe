@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Lib\PostSort;
+namespace App\Lib;
 
 class PostSort {
     

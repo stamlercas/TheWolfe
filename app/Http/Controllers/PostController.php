@@ -9,13 +9,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Lib\FileName;
+use App\Lib\PostSort;
 
 class PostController extends Controller 
 {
     public function getDashboard(Request $request)
     {
         //$posts = Post::orderBy('posts.created_at', 'desc')->join('users', 'posts.user_id', '=', 'users.id')->get(); //fetch all posts
-        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
+        $posts = Post::orderBy('score', 'desc')->paginate(10);
+        $postsCount = Post::get()->count();
         if ($request->ajax())
         {
             return [
@@ -25,7 +27,13 @@ class PostController extends Controller
         }
         
         //return json_encode($posts);
-        return view('dashboard', ['posts' => $posts]);
+        return view('dashboard', ['posts' => $posts, 'postsCount' => $postsCount]);
+    }
+    
+    public function getPost($post_id)
+    {
+        $posts = Post::where('id', $post_id);
+        return view('post', ['posts' => $posts]);
     }
     
     public function postCreatePost(Request $request)
@@ -41,6 +49,8 @@ class PostController extends Controller
         $post = new Post();
         $post->body = $request['body'];
         $post->image_url = $request['image_url'];
+        $score = new PostSort();
+        $post->score = $score->hot(0, 0, time());
         
         $message = 'There was an error.';
         if ($request->user()->posts()->save($post)) //save post in relation to user
@@ -112,6 +122,13 @@ class PostController extends Controller
             if ($like->type == $type) //post is already liked, so undo like
             {
                 $like->delete();
+                
+                $post->score = (new PostSort)->hot(
+                        $user->likes()->where('post_id', $post->id)->where('type', 'like')->count(),
+                        $user->likes()->where('post_id', $post->id)->where('type', 'dislike')->count(), 
+                        strtotime($post->created_at));
+                $post->update();
+                
                 return null;
             }
         }
@@ -125,10 +142,22 @@ class PostController extends Controller
         if ($update)    //if already in db, just update it
         {
             $like->update();
+            
+            $post->score = (new PostSort)->hot(
+                        $user->likes()->where('post_id', $post->id)->where('type', 'like')->count(),
+                        $user->likes()->where('post_id', $post->id)->where('type', 'dislike')->count(), 
+                        strtotime($post->created_at));
+            $post->update();
         }
         else            //not updated, so save new row
         {
             $like->save();
+            
+            $post->score = (new PostSort)->hot(
+                        $user->likes()->where('post_id', $post->id)->where('type', 'like')->count(),
+                        $user->likes()->where('post_id', $post->id)->where('type', 'dislike')->count(), 
+                        strtotime($post->created_at));
+            $post->update();
         }
         return null;
     }

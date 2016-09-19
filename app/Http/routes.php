@@ -75,6 +75,11 @@ Route::get('/logout', [
     'as' => 'logout',
 ]);
 
+Route::get('/posts/{post_id}', [
+    'uses' => 'PostController@getPost',
+    'as' => 'post.get'
+]);
+
 Route::post('/posts/create', [
     'uses' => 'PostController@postCreatePost',
     'as' => 'post.create',
@@ -92,7 +97,7 @@ Route::post('/posts/image/upload', [
     'as' => 'post.image.upload'
 ]);
 
-Route::get('/users/{user_id}', [
+Route::get('/users/{username}', [
     'uses' => 'UserController@getUser',
     'as' => 'user',
     'middleware' => 'auth'

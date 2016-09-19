@@ -99,7 +99,8 @@ class UserController extends Controller {
     public function getUser(Request $request, $username)
     {
         $user = User::where('username', $username)->first();
-        $posts = Post::where('user_id', $user->id)->orderBy('created_at', 'desc')->paginate(10);
+        $posts = Post::where('user_id', $user->id)->orderBy('score', 'desc')->paginate(10);
+        $postsCount = Post::where('user_id', $user->id )->count();
         
         if ($request->ajax())
         {
@@ -109,7 +110,7 @@ class UserController extends Controller {
             ];
         }
         
-        return view('user', ['user' => $user, 'posts' => $posts]);
+        return view('user', ['user' => $user, 'posts' => $posts, 'postsCount' => $postsCount]);
     }
 }
 

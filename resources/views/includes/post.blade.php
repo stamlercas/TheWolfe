@@ -40,7 +40,7 @@
                     <!--
                     <a class='report' href="#">Report</a> -->
                     @if(Auth::user() == $post->user)
-                    | 
+                    <!-- | -->
                     <a class='edit' href='#'>Edit</a> | 
                     <a id='delete{{ $post->id }}' onclick="displayWarningBox('#button{{$post->id}}');">Delete</a>
                     <div id='button{{ $post->id }}' class="alert alert-warning alert-dismissible fade in" role="alert" 

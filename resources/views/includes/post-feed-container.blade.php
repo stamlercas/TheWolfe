@@ -1,5 +1,9 @@
 <section class='row posts'>
-        <div class='col-md-6 col-md-offset-3' id='posts-container' data-next-page='{{ $posts->nextPageUrl() }}'>
+        <div class='col-md-6 col-md-offset-3' id='posts-container' 
+             @if (count($posts) > 1)
+             data-next-page='{{ $posts->nextPageUrl() }}'
+             @endif
+             >
             <header><h3><!-- What other people say... --></h3></header>
             @include('includes.post-feed')
         </div>
@@ -66,11 +70,16 @@
                 $('#edit-modal').modal('hide');
             });
         }
-        $('.like').on('click', function(e){
+        $(document).on('click', '.like', function(e){
             e.preventDefault();
             var id = $('#' + this.id);
             var type = id.hasClass('arrow-up') == true ? 'like' : 'dislike';
             postId = e.target.parentNode.parentNode.parentNode.dataset['postid'];
+            console.log({
+                    type: type,
+                    postId: postId,
+                    _token: '{{ Session::token() }}'
+                });
             $.ajax({
                 method: 'post',
                 url: '{{ route('post.like') }}',
@@ -117,6 +126,7 @@
                         }
             });
         });
+        @if ($postsCount > 10)
         $(window).scroll(function () {
             var page = $('#posts-container').data('next-page');
             
@@ -133,7 +143,7 @@
                             
                             $('#posts-container').append(data.posts);
                             $('#posts-container').data('next-page', data.next_page);
-                            console.log(JSON.stringify(data));
+                            console.log(data.next_page);
                         });
                     }
                 }, 350));
@@ -141,6 +151,7 @@
             else
                 $('#feed-info').empty();
         })
+        @endif
     </script>
 
 
