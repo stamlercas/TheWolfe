@@ -96,10 +96,18 @@ class UserController extends Controller {
         }
     }
     
-    public function getUser($user_id)
+    public function getUser(Request $request, $username)
     {
-        $user = User::where('id', $user_id)->first();
-        $posts = Post::where('user_id', $user_id)->orderBy('created_at', 'desc')->get();
+        $user = User::where('username', $username)->first();
+        $posts = Post::where('user_id', $user->id)->orderBy('created_at', 'desc')->paginate(3);
+        
+        if ($request->ajax())
+        {
+            return [
+                'posts' => view('includes.post-feed')->with(compact('user', 'posts'))->render(),
+                'next_page' => $posts->nextPageUrl()
+            ];
+        }
         
         return view('user', ['user' => $user, 'posts' => $posts]);
     }

@@ -21,5 +21,5 @@
             </header>
         </div>
 </div>
-@include('includes.post-feed')
+@include('includes.post-feed-container')
 @endsection

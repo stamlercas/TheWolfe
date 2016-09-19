@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Welcome
+    The Wolfe
 @endsection
 
 @section('content')

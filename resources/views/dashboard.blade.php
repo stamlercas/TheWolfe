@@ -21,5 +21,5 @@
             </form>
         </div>
     </section>
-    @include('includes.post-feed')
+    @include('includes.post-feed-container')
 @endsection

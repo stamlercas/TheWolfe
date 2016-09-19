@@ -12,9 +12,20 @@ use App\Lib\FileName;
 
 class PostController extends Controller 
 {
-    public function getDashboard()
+    public function getDashboard(Request $request)
     {
-        $posts = Post::orderBy('created_at', 'desc')->get(); //fetch all posts
+        //$posts = Post::orderBy('posts.created_at', 'desc')->join('users', 'posts.user_id', '=', 'users.id')->get(); //fetch all posts
+        $posts = Post::orderBy('created_at', 'desc')->paginate(3);
+        
+        if ($request->ajax())
+        {
+            return [
+                'posts' => view('includes.post-feed')->with(compact('posts'))->render(),
+                'next_page' => $posts->nextPageUrl()
+            ];
+        }
+        
+        //return json_encode($posts);
         return view('dashboard', ['posts' => $posts]);
     }
     

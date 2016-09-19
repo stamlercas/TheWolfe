@@ -15,6 +15,8 @@
         <script src='{{ asset('js/jquery-2.1.3.js') }}'></script>
         <script src='{{ asset('js/bootstrap.min.js') }}'></script>
         <script src='{{ asset('js/dropzone.js') }}'></script>
+        <script src="{{ asset('js/angular.min.js') }}"></script>
+        <script src="{{ asset('js/ng-infinite-scroll.min.js') }}"></script>
         <script src='{{ asset('js/main.js') }}'></script>
         <script>
             uploadRoute = "{{ route('post.image.upload') }}";

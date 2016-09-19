@@ -7,7 +7,7 @@
                         @else
                         <img src='{{ asset('img/welcome/wolfe.jpg') }}' alt='The Wolfe' height='20' />
                         @endif
-                        <a href="{{ route('user', $post->user->id) }}"><strong>{{ $post->user->username }}</strong></a>
+                        <a href="{{ route('user', $post->user->username) }}"><strong>{{ $post->user->username }}</strong></a>
                     </div>
                     <div class='col-xs-6 username text-right info'>
                         {{ $post->created_at->diffForHumans() }}
