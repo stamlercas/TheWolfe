@@ -29,8 +29,8 @@
                         <span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span>
                     </div>
                     <div class='col-xs-1 like' id='likes-{{ $post->id }}'>
-                        {{ Auth::user()->likes()->where('post_id', $post->id)->where('type', 'like')->count() - 
-                        Auth::user()->likes()->where('post_id', $post->id)->where('type', 'dislike')->count() }}
+                        {{ App\Like::where('post_id', $post->id)->where('type', 'like')->count() - 
+                            App\Like::where('post_id', $post->id)->where('type', 'dislike')->count() }}
                     </div>
                     <div class='col-xs-1 like arrow-down {{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->type == 'dislike' ? 'clicked' : '' : ''  }}' 
                          id='arrow-down-{{ $post->id }}'>
