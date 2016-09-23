@@ -124,8 +124,8 @@ class PostController extends Controller
                 $like->delete();
                 
                 $post->score = (new PostSort())->hot(
-                        $user->likes()->where('post_id', $post->id)->where('type', 'like')->count(),
-                        $user->likes()->where('post_id', $post->id)->where('type', 'dislike')->count(), 
+                        Like::where('post_id', $post->id)->where('type', 'like')->count(),
+                        Like::where('post_id', $post->id)->where('type', 'dislike')->count(), 
                         strtotime($post->created_at));
                 $post->update();
                 
@@ -144,8 +144,8 @@ class PostController extends Controller
             $like->update();
             
             $post->score = (new PostSort())->hot(
-                        $user->likes()->where('post_id', $post->id)->where('type', 'like')->count(),
-                        $user->likes()->where('post_id', $post->id)->where('type', 'dislike')->count(), 
+                        Like::where('post_id', $post->id)->where('type', 'like')->count(),
+                        Like::where('post_id', $post->id)->where('type', 'dislike')->count(), 
                         strtotime($post->created_at));
             $post->update();
         }
@@ -154,8 +154,8 @@ class PostController extends Controller
             $like->save();
             
             $post->score = (new PostSort())->hot(
-                        $user->likes()->where('post_id', $post->id)->where('type', 'like')->count(),
-                        $user->likes()->where('post_id', $post->id)->where('type', 'dislike')->count(), 
+                        Like::where('post_id', $post->id)->where('type', 'like')->count(),
+                        Like::where('post_id', $post->id)->where('type', 'dislike')->count(), 
                         strtotime($post->created_at));
             $post->update();
         }
