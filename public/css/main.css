@@ -17,6 +17,9 @@ footer ul {
     margin-top:60px;
 }
 
+.alert ul {
+    list-style-type: none;
+}
 .new-post {
     padding:16px 0;
     border-bottom: 1px solid #ccc;

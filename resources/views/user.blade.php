@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    {{ $user->first_name }}
+    {{ $user->username }}
 @endsection
 
 @section('content')

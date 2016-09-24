@@ -57,13 +57,12 @@ class UserController extends Controller {
         {
             return redirect()->route('dashboard');
         }
-        return redirect()->back();
+        return redirect()->back()->withErrors( ['error' => 'The email and password do not match.'] );
     }
     
     public function getLogout()
     {
         Auth::logout();
-        \Illuminate\Support\Facades\Session::flush();
         return redirect()->route('home');
     }
     
@@ -100,7 +99,7 @@ class UserController extends Controller {
     public function getUser(Request $request, $username)
     {
         $user = User::where('username', $username)->first();
-        $posts = Post::where('user_id', $user->id)->orderBy('score', 'desc')->paginate(10);
+        $posts = Post::where('user_id', $user->id)->orderBy('created_at', 'desc')->paginate(10);
         $postsCount = Post::where('user_id', $user->id )->count();
         
         if ($request->ajax())
