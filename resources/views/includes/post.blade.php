@@ -15,7 +15,7 @@
                 </div>
                 @if (Storage::disk('local')->has('posts/' . $post->image_url))
                 <div class='col-md-12' id='post-img'>
-                    <img class='img img-responsive' src='{{ route('post.image', ['filename' => $post->image_url]) }}' alt='Image of Post' />
+                    <img class='img img-responsive' src='{{ route('post.image', ['filename' => $post->image_url]) }}' alt='Posted at {{ $post->created_at }}' />
                 </div>
                 @endif
                 <!--

@@ -19,6 +19,9 @@
             <header>
                 <h3>{{ $user->username }}</h3>
             </header>
+            @if (Auth::check())
+            <a href="{{ route('account') }}">Update account info</a>
+            @endif
         </div>
 </div>
 @include('includes.post-feed-container')

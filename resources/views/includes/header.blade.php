@@ -13,7 +13,7 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 @if(Auth::check())
-                <li><a href="{{ route('account') }}">Account</a></li>
+                <li><a href="{{ route('user', ['username' => Auth::user()->username]) }}">Account</a></li>
                 <li><a href="{{ route('logout') }}">Logout, {{ Auth::user()->username }}</a></li>
                 @else
                 <li><a href="{{ route('home') }}">Login</a></li>

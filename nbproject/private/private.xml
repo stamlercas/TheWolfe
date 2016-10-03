@@ -5,10 +5,15 @@
         <group>
             <file>file:/C:/xampp/htdocs/laravel/resources/views/includes/header.blade.php</file>
             <file>file:/C:/xampp/htdocs/laravel/app/Http/Controllers/UserController.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/resources/views/contact.blade.php</file>
             <file>file:/C:/xampp/htdocs/laravel/resources/views/includes/post.blade.php</file>
             <file>file:/C:/xampp/htdocs/laravel/resources/views/includes/post-feed-container.blade.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/public/css/main.css</file>
+            <file>file:/C:/xampp/htdocs/laravel/resources/views/dashboard.blade.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/resources/views/user.blade.php</file>
             <file>file:/C:/xampp/htdocs/laravel/config/session.php</file>
             <file>file:/C:/xampp/htdocs/laravel/app/Http/Controllers/PostController.php</file>
+            <file>file:/C:/xampp/htdocs/laravel/resources/views/welcome.blade.php</file>
         </group>
     </open-files>
 </project-private>

@@ -79,21 +79,27 @@ class UserController extends Controller {
             //,'file' => 'mimes:jpeg,jpg,png,gif'
         ]);
         
-        $file = $request->file('file');
-        $file_name = new FileName($file, 'users');
-        
         $user = Auth::user();
         $user->first_name = $request['first_name'];
         $user->last_name = $request['last_name'];
-        $user->image_url = $file_name->name;
+        
+        if ($request->hasFile('file'))
+        {
+            $file = $request->file('file');
+            $file_name = new FileName($file, 'users');
+            $user->image_url = $file_name->name;
+            
+            /*
+            $filename = 'users/' . $request['first_name'] . '-' . $user->id . '.' . $file->getClientOriginalExtension()
+            */
+            if ($file) {
+                Storage::disk('local')->put($file_name->filename, File::get($file));
+            }
+        }
+        
         $user->update();
         
-        /*
-        $filename = 'users/' . $request['first_name'] . '-' . $user->id . '.' . $file->getClientOriginalExtension()
-        */
-        if ($file) {
-            Storage::disk('local')->put($file_name->filename, File::get($file));
-        }
+        return redirect()->route('user', ['username' => $user->username]);
     }
     
     public function getUser(Request $request, $username)
