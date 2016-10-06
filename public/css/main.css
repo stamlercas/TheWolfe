@@ -118,3 +118,18 @@ footer ul {
 .footer-text {
     margin:10px 0 5px 0;
 }
+
+@media (max-width: 978px) {
+    .posts-container {
+      padding:0;
+      margin:0;
+    }
+    /*
+    .info-container {
+        padding: 0 15px 0 15px;
+    }
+    */
+    .user-image-thumb {
+        max-width:50px;
+    }
+}

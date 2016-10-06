@@ -1,5 +1,5 @@
 <section class='row posts'>
-        <div class='col-md-6 col-md-offset-3' id='posts-container' 
+        <div class='col-md-6 col-md-offset-3 posts-container' id='posts-container' 
              @if (count($posts) > 1)
              data-next-page='{{ $posts->nextPageUrl() }}'
              @endif

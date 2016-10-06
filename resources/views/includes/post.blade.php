@@ -1,5 +1,5 @@
             <article class='post' data-postid="{{ $post->id }}">
-                <div class='row'>
+                <div class='row info-container'>
                     <div class='col-xs-6 username' id='username'>
                         @if ($post->user->image_url != null)
                         <img src='{{ route('user.image', ['filename' => $post->user->image_url]) }}' 
