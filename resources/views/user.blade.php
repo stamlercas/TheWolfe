@@ -19,7 +19,7 @@
             <header>
                 <h3>{{ $user->username }}</h3>
             </header>
-            @if (Auth::check())
+            @if (Auth::user() == $user)
             <a href="{{ route('account') }}">Update account info</a>
             @endif
         </div>

@@ -30,9 +30,14 @@ footer ul {
 }
 
 .posts .post {
+    /*
     padding-left: 10px;
     border-left: 3px solid #E95420;
+    */
     margin-bottom: 30px;
+}
+.post-img {
+    padding:0;
 }
 
 .posts .post .info {
