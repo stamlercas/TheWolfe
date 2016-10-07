@@ -18,7 +18,7 @@ class UserController extends Controller {
         //will output an array of lists that is accessible from the view by using $errors->all()
         $this->validate($request, [
             'email' => 'required|email|unique:users',
-            'username' => 'required|min:4|max:32|unique:users',
+            'username' => 'required|min:4|max:32|unique:users|alpha_num',
             'first_name' => 'required|max:120',
             'last_name' => 'required|max:120',
             'password' => 'required|min:4'
